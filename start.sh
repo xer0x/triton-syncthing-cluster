@@ -41,6 +41,9 @@ echo
 #echo "password=PASSWORD"
 #command -v open >/dev/null 2>&1 && `open http://$DASHBOARD_URL/`
 
+DASHBOARD_URL=$(docker exec -it stc_syncthing_1 bash -c 'source /consul_env.sh && echo $WEB_URL')
+echo Dashboard url: $DASHBOARD_URL
+
 echo
 echo 'Scaling Syncthing cluster to three nodes'
 echo "docker-compose --project-name=$PREFIX scale syncthing=3"
@@ -49,3 +52,9 @@ docker-compose --project-name=$PREFIX scale syncthing=3
 echo
 echo "Go ahead, try a lucky 7 node cluster:"
 echo "docker-compose --project-name="$PREFIX" scale syncthing=7"
+
+echo
+echo "To clean up run:"
+echo "docker-compose --project-name="$PREFIX" stop consul syncthing"
+echo "docker-compose --project-name="$PREFIX" rm -f consul syncthing"
+
