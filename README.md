@@ -7,12 +7,15 @@ A Dockerized [Syncthing][1] container for use on Joyent's Triton infrastructure.
 For this to work you'll need to already have setup [Docker][2], [Docker-compose][3], and a Joyent [Triton][4] account.
 
 ```bash
+# The simple way
 bash start.sh
 ```
 
 or 
 
 ```bash
+# The detailed way
+
 # Start up Consul and Syncthing
 docker-compose --project-name=stc up -d --timeout=300
 
