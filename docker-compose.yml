@@ -3,7 +3,7 @@ syncthing:
   links:
   - consul
   ports:
-  - "8384:8384"
+  - 8384
   restart: always
   mem_limit: 1024m
 consul:
@@ -12,6 +12,6 @@ consul:
   expose:
   - 8400
   - 8500
-  - 53:53/udp
+  - 53/udp
   restart: always
   mem_limit: 256m
