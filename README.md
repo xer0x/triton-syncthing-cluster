@@ -4,11 +4,17 @@ A Dockerized [Syncthing][1] container for use on Joyent's Triton infrastructure.
 
 [Syncthing][1] is let's you setup DIY Dropbox-like folders that stay in sync with each other.
 
-For this to work you'll need to already have setup [Docker][2], [Docker-compose][3], and Joyent [Triton][4].
+For this to work you'll need to already have setup [Docker][2], [Docker-compose][3], and a Joyent [Triton][4] account.
+
+```bash
+bash start.sh
+```
+
+or 
 
 ```bash
 # Start up Consul and Syncthing
-docker-compose --project-name=stc up
+docker-compose --project-name=stc up -d --timeout=300
 
 # Scale up more Syncthing containers
 docker-compose --project-name=stc scale syncthing=4
