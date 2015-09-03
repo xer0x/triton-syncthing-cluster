@@ -8,10 +8,10 @@ For this to work you'll need to already have setup [Docker][2], [Docker-compose]
 
 ```bash
 # Start up Consul and Syncthing
-docker-compose up --project-name=stc
+docker-compose --project-name=stc up
 
 # Scale up more Syncthing containers
-docker-compose scale syncthing=4
+docker-compose --project-name=stc scale syncthing=4
 ```
 
 [1]: https://syncthing.net/
