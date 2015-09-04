@@ -31,18 +31,9 @@ while [ $SYNCTHINGRESPONSIVE != 1 ]; do
 done
 echo
 
-# TODO: extract Syncthing UI user/password from Consul
-# TODO: open web page
-
-#echo
-#echo 'Syncthing cluster running and bootstrapped'
-#echo "Dashboard: $DASHBOARD_URL"
-#echo "username=USERNAME"
-#echo "password=PASSWORD"
-#command -v open >/dev/null 2>&1 && `open http://$DASHBOARD_URL/`
-
 DASHBOARD_URL=$(docker exec -it stc_syncthing_1 bash -c 'source /consul_env.sh && echo $WEB_URL')
 echo Dashboard url: $DASHBOARD_URL
+command -v open >/dev/null 2>&1 && `open $DASHBOARD_URL`
 
 echo
 echo 'Scaling Syncthing cluster to three nodes'
