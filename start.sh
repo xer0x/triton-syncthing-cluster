@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Run Docker compose to create containers.
+#  - The `Docker up` results are 1 Syncthing and 1 Consul
+#  - We wait for the containers to be running.
+#  - We display the URL for the Syncthing Web UI
+#  - We scale up 2 more Syncthings to our cluster
+
+# Caution: this will automatically open a browser to view the Syncthing Web-UI
+
+
 PREFIX=stc
 export DOCKER_CLIENT_TIMEOUT=300
 
@@ -33,7 +42,7 @@ echo
 
 DASHBOARD_URL=$(docker exec -it stc_syncthing_1 bash -c 'source /consul_env.sh && echo $WEB_URL')
 echo Dashboard url: $DASHBOARD_URL
-command -v open >/dev/null 2>&1 && `open $DASHBOARD_URL`
+command -v open >/dev/null 2>&1 && `open "$DASHBOARD_URL"`
 
 echo
 echo 'Scaling Syncthing cluster to three nodes'
