@@ -40,9 +40,12 @@ while [ $SYNCTHINGRESPONSIVE != 1 ]; do
 done
 echo
 
-DASHBOARD_URL=$(docker exec -it stc_syncthing_1 bash -c 'source /consul_env.sh && echo $WEB_URL')
+DASHBOARD_URL=$(docker exec -it stc_syncthing_1 bash -c 'source /consul_env.sh && echo -n $WEB_URL')
 echo Dashboard url: $DASHBOARD_URL
-command -v open >/dev/null 2>&1 && `open "$DASHBOARD_URL"`
+
+# Open new browser tab with Web UI
+command -v open >/dev/null 2>&1 && $(open "$DASHBOARD_URL")
+
 
 echo
 echo 'Scaling Syncthing cluster to three nodes'
